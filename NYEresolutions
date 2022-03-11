@@ -11,6 +11,7 @@ GROUP BY tweet_category
 ORDER BY COUNT (*) 
 
 -- Category that was retweeted the most
-SELECT DISTINCT tweet_category, retweet_count
+SELECT tweet_category, retweet_count
 FROM dbo.NYEResolutions
-WHERE retweet_count IS NOT NULL
+WHERE retweet_count = (SELECT MAX (retweet_count) FROM dbo.NYEResolutions) 
+
